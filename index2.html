@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وب‌هلپ | طراحی لندینگ‌پیج اختصاصی در ۴۸ ساعت</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --border-radius: 16px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            color: var(--secondary);
+            line-height: 1.7;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to left, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        h2.center:after {
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: linear-gradient(to left, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        nav a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero */
+        .hero {
+            padding-top: 140px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            margin-top: 2rem;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 1;
+        }
+        
+        /* Services */
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            background-color: var(--light);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 3rem;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .portfolio-img {
+            height: 240px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .portfolio-img i {
+            font-size: 4rem;
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .portfolio-content {
+            padding: 32px;
+        }
+        
+        .portfolio-tag {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background-color: white;
+        }
+        
+        .pricing-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-display {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .price-note {
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        
+        .guarantee-list {
+            margin: 40px 0;
+        }
+        
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .guarantee-item:last-child {
+            border-bottom: none;
+        }
+        
+        .guarantee-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Order Form */
+        .order {
+            background-color: var(--light);
+        }
+        
+        .order-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .order-form {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-note {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .form-note i {
+            color: var(--primary);
+            margin-left: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-logo .logo {
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .footer-contact {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .contact-icon {
+            color: var(--primary-light);
+            width: 24px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 40px;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+                z-index: 999;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 24px;
+                width: 100%;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-pattern {
+                width: 100%;
+                opacity: 0.2;
+            }
+            
+            .portfolio-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card,
+            .order-form {
+                padding: 40px 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .price-amount {
+                font-size: 3rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-code"></i>
+                وب‌هلپ
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#portfolio">نمونه‌کارها</a></li>
+                    <li><a href="#pricing">قیمت</a></li>
+                    <li><a href="#order" class="btn">سفارش دهید</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>لندینگ‌پیج حرفه‌ای در ۴۸ ساعت</h1>
+                <p class="hero-subtitle">
+                    طراحی اختصاصی و بهینه‌شده برای کسب‌وکار شما. سایت دو زبانه، واکنش‌گرا و با تمام امکانات مورد نیاز برای تبدیل بازدیدکننده به مشتری.
+                </p>
+                <div class="hero-cta">
+                    <a href="#order" class="btn">
+                        <i class="fas fa-rocket"></i> سفارش لندینگ فوری
+                    </a>
+                    <a href="#portfolio" class="btn btn-outline">
+                        <i class="fas fa-eye"></i> مشاهده نمونه‌کارها
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="center">چه چیزی دریافت می‌کنید؟</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>سایت دو زبانه اختصاصی</h3>
+                    <p>طراحی کاملاً سفارشی با قابلیت فارسی/انگلیسی و سیستم مدیریت محتوای کاربرپسند.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>بهینه برای موبایل و سرعت</h3>
+                    <p>سایتی با طراحی ریسپانسیو و سرعت بارگذاری بالا برای تجربه کاربری بی‌نظیر.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>فرم تماس و اتصال شبکه‌ها</h3>
+                    <p>فرم تماس هوشمند و اتصال مستقیم به واتساپ، اینستاگرام و سایر شبکه‌ها.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="center">نمونه‌کارهای واقعی</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">آموزش آنلاین</div>
+                        <h3>لندینگ فروش دوره‌های آموزشی</h3>
+                        <p>طراحی سایت برای فروش دوره‌های آنلاین با سیستم پرداخت و مدیریت دانشجویان.</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: 16px;">
+                            مشاهده نمونه
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">فروش محصول</div>
+                        <h3>سایت فروش محصولات دیجیتال</h3>
+                        <p>طراحی سایت فروش محصولات با گالری تصاویر، نظرات کاربران و پرداخت آنلاین.</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: 16px;">
+                            مشاهده نمونه
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">خدمات مشاوره</div>
+                        <h3>لندینگ خدمات مشاوره تخصصی</h3>
+                        <p>سایت معرفی خدمات مشاوره با سیستم رزرو جلسات و مدیریت قرارملاقات‌ها.</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: 16px;">
+                            مشاهده نمونه
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="center">هزینه و گارانتی</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="price-display">
+                        <div class="price-amount">۱۵ میلیون تومان</div>
+                        <div class="price-note">برای لندینگ‌پیج کامل و حرفه‌ای</div>
+                    </div>
+                    
+                    <div class="guarantee-list">
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <strong>تحویل در ۴۸ ساعت</strong>
+                                <p>بدون تأخیر و با کیفیت تضمینی</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <strong>طراحی دو زبانه</strong>
+                                <p>فارسی و انگلیسی با سیستم مدیریت</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <strong>گارانتی بازگشت ۵۰٪</strong>
+                                <p>در صورت تأخیر در تحویل پروژه</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <strong>پشتیبانی ۳ ماهه</strong>
+                                <p>پشتیبانی فنی و آموزشی رایگان</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <a href="#order" class="btn">
+                            <i class="fas fa-shopping-cart"></i> سفارش دهید
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="order" id="order">
+        <div class="container">
+            <h2 class="center">سفارش لندینگ فوری</h2>
+            <div class="order-container">
+                <form class="order-form" action="#" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">نام کامل *</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">شماره تماس *</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ایمیل یا تلگرام</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">نام کسب‌وکار</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">هدف سایت شما چیست؟</label>
+                            <select class="form-control">
+                                <option value="">انتخاب کنید</option>
+                                <option value="course">فروش دوره آموزشی</option>
+                                <option value="product">فروش محصول دیجیتال</option>
+                                <option value="service">خدمات مشاوره</option>
+                                <option value="booking">سیستم رزرواسیون</option>
+                                <option value="brand">برندینگ و معرفی</option>
+                                <option value="other">سایر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">توضیحات پروژه (اختیاری)</label>
+                            <textarea class="form-control" rows="3" placeholder="در صورت نیاز، جزئیات بیشتری درباره پروژه خود بنویسید"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> ارسال درخواست
+                    </button>
+                    
+                    <p class="form-note">
+                        <i class="fas fa-clock"></i> پس از ارسال، در کمتر از ۲ ساعت با شما تماس خواهیم گرفت.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <i class="fas fa-code"></i>
+                        وب‌هلپ
+                    </div>
+                    <p style="opacity: 0.8; max-width: 400px;">
+                        تخصص ما طراحی لندینگ‌پیج‌های حرفه‌ای و مؤثر برای کسب‌وکارهای ایرانی است. هر پروژه را با دقت و توجه به جزئیات اجرا می‌کنیم.
+                    </p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-title">راه‌های ارتباطی</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">شماره تماس</div>
+                                <div>۰۹۱۲-XXX-XXXX</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">آیدی تلگرام</div>
+                                <div>@webhelp_ir</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">ایمیل</div>
+                                <div>contact@webhelp.ir</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © ۱۴۰۴ — وب‌هلپ. تمامی حقوق محفوظ است.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                    header.style.padding = '15px 0';
+                } else {
+                    header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+                    header.style.padding = '20px 0';
+                }
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Close mobile menu if open
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        
+                        // Smooth scroll
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form submission
+            const orderForm = document.querySelector('.order-form');
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple validation
+                const nameInput = this.querySelector('input[type="text"]');
+                const phoneInput = this.querySelector('input[type="tel"]');
+                
+                if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+                    alert('لطفا نام و شماره تماس خود را وارد کنید.');
+                    return;
+                }
+                
+                // Show success message
+                alert('سفارش شما با موفقیت ثبت شد!\n\nکارشناسان ما طی ۲ ساعت با شما تماس خواهند گرفت.\n\nبا تشکر از انتخاب شما');
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements to animate
+            document.querySelectorAll('.service-card, .portfolio-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

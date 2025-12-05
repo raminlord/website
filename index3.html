@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طراحی اختصاصی | وب‌سایت‌های لوکس</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* انیمیشن‌های مینیمال */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        /* استایل‌های سفارشی */
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        .text-gold {
+            color: #D4AF37;
+        }
+        
+        .bg-gold {
+            background-color: #D4AF37;
+        }
+        
+        .hover-gold:hover {
+            color: #D4AF37;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            right: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav-link::after {
+            width: 100%;
+        }
+        
+        /* استایل فرم */
+        input, textarea {
+            border-bottom: 1px solid #E5E5E5;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #000000;
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* فوتر حرفه‌ای */
+        .footer-divider {
+            border-top: 1px solid rgba(229, 229, 229, 0.3);
+        }
+        
+        .footer-link {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-link::before {
+            content: '›';
+            position: absolute;
+            right: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #D4AF37;
+        }
+        
+        .footer-link:hover::before {
+            opacity: 1;
+            right: -20px;
+        }
+        
+        .footer-link:hover {
+            transform: translateX(-5px);
+            color: #D4AF37;
+        }
+        
+        .footer-section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 1px;
+            background-color: #D4AF37;
+        }
+        
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon:hover {
+            border-color: #D4AF37;
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .premium-badge {
+            position: relative;
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+        
+        .copyright-border {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-black min-h-screen">
+    <!-- ناوبری -->
+    <nav class="fade-in fixed w-full bg-white z-50 py-6 px-6 md:px-12 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-semibold tracking-tight">LuxDesign</a>
+            
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="index.html" class="nav-link active-nav-link text-sm">خانه</a>
+                <a href="portfolio.html" class="nav-link text-sm">نمونه‌کارها</a>
+                <a href="services.html" class="nav-link text-sm">خدمات</a>
+                <a href="about.html" class="nav-link text-sm">درباره من</a>
+                <a href="contact.html" class="nav-link text-sm">تماس</a>
+            </div>
+            
+            <!-- منوی موبایل -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-black">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- منوی موبایل (پنهان) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-6 absolute w-full left-0 top-full border-t border-gray-200">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="py-2 border-b border-gray-100">خانه</a>
+                <a href="portfolio.html" class="py-2 border-b border-gray-100">نمونه‌کارها</a>
+                <a href="services.html" class="py-2 border-b border-gray-100">خدمات</a>
+                <a href="about.html" class="py-2 border-b border-gray-100">درباره من</a>
+                <a href="contact.html" class="py-2">تماس</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- محتوای صفحات -->
+    <main class="pt-20">
+        <!-- صفحه اصلی -->
+        <div id="home-page">
+            <!-- هدر تمام صفحه -->
+            <section class="min-h-screen flex items-center justify-center px-6 md:px-12">
+                <div class="container mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-light leading-tight slide-up">
+                        طراحی وب‌سایت‌های اختصاصی برای برندهایی که کیفیت را جدی می‌گیرند.
+                    </h1>
+                    
+                    <div class="mt-16 slide-up" style="animation-delay: 0.3s">
+                        <a href="portfolio.html" class="inline-block border border-black px-10 py-4 text-sm tracking-wide btn-hover">
+                            مشاهده نمونه‌کارها
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- بخش مزایا -->
+            <section class="py-32 px-6 md:px-12 bg-gray-50">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-light text-center mb-20 slide-up">چرا طراحی مینیمال؟</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+                        <!-- مزیت ۱ -->
+                        <div class="text-center slide-up" style="animation-delay: 0.2s">
+                            <div class="flex justify-center mb-6">
+                                <i class="fas fa-pen-nib text-4xl"></i>
+                            </div>
+                            <h3 class="text-xl font-light mb-4">طراحی مینیمال</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                تمرکز بر عناصر ضروری، حذف شلوغی‌های بصری، و ارائه تجربه‌ای خالص و متمرکز.
+                            </p>
+                        </div>
+                        
+                        <!-- مزیت ۲ -->
+                        <div class="text-center slide-up" style="animation-delay: 0.4s">
+                            <div class="flex justify-center mb-6">
+                                <i class="fas fa-mouse-pointer text-4xl"></i>
+                            </div>
+                            <h3 class="text-xl font-light mb-4">تجربه کاربری روان</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                ناوبری شهودی، تعامل‌های معنادار و جریان منطقی کاربر برای دستیابی به اهداف.
+                            </p>
+                        </div>
+                        
+                        <!-- مزیت ۳ -->
+                        <div class="text-center slide-up" style="animation-delay: 0.6s">
+                            <div class="flex justify-center mb-6">
+                                <i class="fas fa-bolt text-4xl"></i>
+                            </div>
+                            <h3 class="text-xl font-light mb-4">سرعت بالا</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                بهینه‌سازی کامل برای بارگذاری سریع، کاهش نرخ پرش و افزایش رضایت کاربر.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- نمونه‌کارها -->
+            <section class="py-32 px-6 md:px-12">
+                <div class="container mx-auto">
+                    <div class="flex justify-between items-end mb-16">
+                        <h2 class="text-3xl font-light">نمونه‌کارهای منتخب</h2>
+                        <a href="portfolio.html" class="text-sm border-b border-black pb-1 hover-gold">مشاهده همه</a>
+                    </div>
+                    
+                    <div class="space-y-32">
+                        <!-- نمونه کار ۱ -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center slide-up">
+                            <div class="order-2 lg:order-1">
+                                <div class="text-sm text-gray-500 mb-2">پروژه لوکس</div>
+                                <h3 class="text-3xl font-light mb-6">برند طلا و جواهر هرمس</h3>
+                                <p class="text-gray-600 mb-8 leading-relaxed">
+                                    طراحی وب‌سایتی با حس لوکس و اختصاصی برای نمایش محصولات گران‌قیمت. تمرکز بر زیبایی‌شناسی و تجربه بصری منحصر به فرد.
+                                </p>
+                                <div class="text-sm text-gray-500 mb-4">نقش طراح: UI / Frontend / Performance</div>
+                                <a href="#" class="inline-block border border-black px-8 py-3 text-sm tracking-wide btn-hover">
+                                    مشاهده نسخه آنلاین
+                                </a>
+                            </div>
+                            <div class="order-1 lg:order-2">
+                                <div class="bg-gray-100 h-96 rounded-lg overflow-hidden"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- نمونه کار ۲ -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center slide-up" style="animation-delay: 0.2s">
+                            <div>
+                                <div class="text-sm text-gray-500 mb-2">پروژه شرکتی</div>
+                                <h3 class="text-3xl font-light mb-6">گروه معماری آرمان</h3>
+                                <p class="text-gray-600 mb-8 leading-relaxed">
+                                    طراحی پورتفولیو آنلاین با تمرکز بر نمایش پروژه‌های معماری. استفاده از فضای سفید فراوان برای برجسته‌سازی آثار.
+                                </p>
+                                <div class="text-sm text-gray-500 mb-4">نقش طراح: UI / Frontend</div>
+                                <a href="#" class="inline-block border border-black px-8 py-3 text-sm tracking-wide btn-hover">
+                                    مشاهده نسخه آنلاین
+                                </a>
+                            </div>
+                            <div>
+                                <div class="bg-gray-100 h-96 rounded-lg overflow-hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- صفحه نمونه‌کارها -->
+        <div id="portfolio-page" class="hidden">
+            <section class="py-32 px-6 md:px-12">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl font-light text-center mb-20 slide-up">نمونه‌کارها</h1>
+                    
+                    <!-- پروژه ۱ -->
+                    <div class="mb-40 slide-up">
+                        <div class="text-center mb-16">
+                            <h2 class="text-5xl font-light mb-6">برند طلا و جواهر هرمس</h2>
+                            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                                طراحی وب‌سایتی با حس لوکس و اختصاصی برای نمایش محصولات گران‌قیمت. تمرکز بر زیبایی‌شناسی و تجربه بصری منحصر به فرد.
+                            </p>
+                            <div class="mt-6 text-sm text-gray-500">نقش طراح: UI / Frontend / Performance</div>
+                        </div>
+                        
+                        <div class="space-y-6 mb-12">
+                            <div class="bg-gray-100 h-96 rounded-lg"></div>
+                            <div class="bg-gray-100 h-64 rounded-lg"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="#" class="inline-block border border-black px-10 py-4 text-sm tracking-wide btn-hover">
+                                مشاهده نسخه آنلاین
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- پروژه ۲ -->
+                    <div class="mb-40 slide-up" style="animation-delay: 0.2s">
+                        <div class="text-center mb-16">
+                            <h2 class="text-5xl font-light mb-6">گروه معماری آرمان</h2>
+                            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                                طراحی پورتفولیو آنلاین با تمرکز بر نمایش پروژه‌های معماری. استفاده از فضای سفید فراوان برای برجسته‌سازی آثار.
+                            </p>
+                            <div class="mt-6 text-sm text-gray-500">نقش طراح: UI / Frontend</div>
+                        </div>
+                        
+                        <div class="space-y-6 mb-12">
+                            <div class="bg-gray-100 h-96 rounded-lg"></div>
+                            <div class="bg-gray-100 h-64 rounded-lg"></div>
+                            <div class="bg-gray-100 h-80 rounded-lg"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="#" class="inline-block border border-black px-10 py-4 text-sm tracking-wide btn-hover">
+                                مشاهده نسخه آنلاین
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- پروژه ۳ -->
+                    <div class="slide-up" style="animation-delay: 0.4s">
+                        <div class="text-center mb-16">
+                            <h2 class="text-5xl font-light mb-6">کافه‌رستوران اوراد</h2>
+                            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                                طراحی وب‌سایت مینیمال برای کافه‌رستوران لاکچری. ایجاد فضایی گرم و دلنشین برای نمایش منو و رزرو آنلاین.
+                            </p>
+                            <div class="mt-6 text-sm text-gray-500">نقش طراح: UI / Frontend / UX</div>
+                        </div>
+                        
+                        <div class="space-y-6 mb-12">
+                            <div class="bg-gray-100 h-96 rounded-lg"></div>
+                            <div class="bg-gray-100 h-64 rounded-lg"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="#" class="inline-block border border-black px-10 py-4 text-sm tracking-wide btn-hover">
+                                مشاهده نسخه آنلاین
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- صفحه خدمات -->
+        <div id="services-page" class="hidden">
+            <section class="py-32 px-6 md:px-12">
+                <div class="container mx-auto">
+                    <h1 class="text-4xl font-light text-center mb-20 slide-up">خدمات طراحی</h1>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+                        <!-- خدمت ۱ -->
+                        <div class="text-center slide-up">
+                            <div class="mb-8">
+                                <div class="text-5xl font-light mb-2">۰۱</div>
+                                <h3 class="text-2xl font-light mb-6">لندینگ پیج لاکچری</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-8">
+                                مناسب برندهایی که دنبال تاثیرگذاری سریع و حرفه‌ای هستند.
+                            </p>
+                            <div class="text-lg font-light mt-6">شروع قیمت: <span class="text-gold">۱۰ میلیون تومان</span></div>
+                        </div>
+                        
+                        <!-- خدمت ۲ -->
+                        <div class="text-center slide-up" style="animation-delay: 0.2s">
+                            <div class="mb-8">
+                                <div class="text-5xl font-light mb-2">۰۲</div>
+                                <h3 class="text-2xl font-light mb-6">سایت شرکتی ممتاز</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-8">
+                                ساخت هویت دیجیتال رسمی با حس کیفیت بالا.
+                            </p>
+                            <div class="text-lg font-light mt-6">شروع قیمت: <span class="text-gold">۱۵ میلیون تومان</span></div>
+                        </div>
+                        
+                        <!-- خدمت ۳ -->
+                        <div class="text-center slide-up" style="animation-delay: 0.4s">
+                            <div class="mb-8">
+                                <div class="text-5xl font-light mb-2">۰۳</div>
+                                <h3 class="text-2xl font-light mb-6">فروشگاه سبک</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-8">
+                                مناسب فروشگاه‌هایی با ۵ تا ۲۰ محصول، سبک، سریع، بدون پیچیدگی.
+                            </p>
+                            <div class="text-lg font-light mt-6">شروع قیمت: <span class="text-gold">۲۰ میلیون تومان</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-32 slide-up" style="animation-delay: 0.6s">
+                        <a href="contact.html" class="inline-block border border-black px-10 py-4 text-sm tracking-wide btn-hover">
+                            درخواست طراحی
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- صفحه درباره من -->
+        <div id="about-page" class="hidden">
+            <section class="min-h-screen flex items-center justify-center px-6 md:px-12">
+                <div class="container mx-auto">
+                    <div class="max-w-3xl mx-auto text-center slide-up">
+                        <h1 class="text-4xl font-light mb-12">درباره من</h1>
+                        <p class="text-xl font-light leading-relaxed text-gray-700">
+                            من وب‌سایت‌هایی طراحی می‌کنم که کیفیت، اعتماد و تجربه کاربری را در اولویت قرار می‌دهند. هدفم ساخت تجربه‌های دیجیتالی است که برندها را چند سطح بالاتر نشان می‌دهد.
+                        </p>
+                        
+                        <div class="mt-20 pt-12 border-t border-gray-200">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-600">
+                                <div>
+                                    <div class="font-medium mb-2">تمرکز</div>
+                                    <div class="font-light">طراحی مینیمال</div>
+                                    <div class="font-light">تجربه کاربری</div>
+                                    <div class="font-light">عملکرد بهینه</div>
+                                </div>
+                                
+                                <div>
+                                    <div class="font-medium mb-2">رویکرد</div>
+                                    <div class="font-light">ساده‌سازی پیچیده‌ها</div>
+                                    <div class="font-light">تمرکز بر جزئیات</div>
+                                    <div class="font-light">کیفیت پایدار</div>
+                                </div>
+                                
+                                <div>
+                                    <div class="font-medium mb-2">ارزش‌ها</div>
+                                    <div class="font-light">صراحت و شفافیت</div>
+                                    <div class="font-light">تک‌کاری اختصاصی</div>
+                                    <div class="font-light">تحویل به موقع</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- صفحه تماس -->
+        <div id="contact-page" class="hidden">
+            <section class="py-32 px-6 md:px-12">
+                <div class="container mx-auto">
+                    <div class="max-w-2xl mx-auto">
+                        <h1 class="text-4xl font-light text-center mb-20 slide-up">تماس با من</h1>
+                        
+                        <form class="space-y-12 slide-up" style="animation-delay: 0.2s">
+                            <div>
+                                <label class="block text-sm mb-4">نام</label>
+                                <input type="text" class="w-full py-4 bg-transparent" placeholder="نام کامل">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm mb-4">ایمیل</label>
+                                <input type="email" class="w-full py-4 bg-transparent" placeholder="آدرس ایمیل">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm mb-4">پیام</label>
+                                <textarea rows="6" class="w-full py-4 bg-transparent" placeholder="پیام شما..."></textarea>
+                            </div>
+                            
+                            <div class="pt-8">
+                                <button type="submit" class="w-full border border-black py-4 text-sm tracking-wide btn-hover">
+                                    ارسال پیام
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="mt-32 pt-12 border-t border-gray-200 text-center text-sm text-gray-600 slide-up" style="animation-delay: 0.4s">
+                            <p>پاسخ به تمامی پیام‌ها در طی ۲۴ ساعت کاری ارسال می‌شود.</p>
+                            <p class="mt-2">جهت پروژه‌های فوری از طریق ایمیل مستقیم تماس بگیرید.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- فوتر حرفه‌ای ۵ ستونه -->
+    <footer class="bg-black text-white">
+        <div class="py-20 px-6 md:px-12">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+                    <!-- ستون ۱: درباره کسب و کار -->
+                    <div class="lg:col-span-2 slide-up">
+                        <div class="premium-badge">طراحی اختصاصی • خدمات ویژه • سرمایه‌گذاری</div>
+                        <h3 class="text-2xl font-light mb-6">LuxDesign</h3>
+                        <p class="text-gray-300 leading-relaxed mb-8 text-sm">
+                            ما خلق تجربه‌های دیجیتال منحصر‌به‌فرد هستیم. هر پروژه یک اثر هنری است که با دقت و ظرافت خلق می‌شود تا هویت شما را در دنیای دیجیتال تعریف کند.
+                        </p>
+                        
+                        <!-- ارتباط اختصاصی -->
+                        <div class="mt-10">
+                            <h4 class="text-sm font-medium mb-4 text-gold">ارتباط اختصاصی</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">VIP شماره تماس</div>
+                                        <div class="text-gray-300 text-sm">۰۲۱-۹۳۲۳۰۰۰۰</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-telegram text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">آیدی تلگرام اختصاصی</div>
+                                        <div class="text-gray-300 text-sm">@luxdesign.premium</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">ایمیل پرمیوم</div>
+                                        <div class="text-gray-300 text-sm">contact@luxdesign-premium.ir</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ستون ۲: محصولات -->
+                    <div class="slide-up" style="animation-delay: 0.1s">
+                        <h4 class="footer-section-title text-lg font-light">محصولات</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">سایت ساز اختصاصی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">لندینگ پیج لوکس</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">طراحی سایت فروشگاهی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">سایت شرکتی ممتاز</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">فاکتورساز اختصاصی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">نمونه کارهای اختصاصی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">آموزش طراحی سایت</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- ستون ۳: کسب و کارها -->
+                    <div class="slide-up" style="animation-delay: 0.2s">
+                        <h4 class="footer-section-title text-lg font-light">کسب و کارها</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">وب سایت شرکتی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">سایت پزشکی لوکس</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">وب سایت وکالت</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">سایت رستوران اختصاصی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">وب سایت هتل لوکس</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">سایت انتشارات</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">پورتال اختصاصی</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- ستون ۴: درباره ما -->
+                    <div class="slide-up" style="animation-delay: 0.3s">
+                        <h4 class="footer-section-title text-lg font-light">درباره ما</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">مرکز پشتیبانی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">آکادمی طراحی</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">استخدام طراح</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">بروزرسانی‌ها</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">قوانین و مقررات</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">ثبت شکایت</a></li>
+                            <li><a href="#" class="footer-link text-gray-300 hover:text-white text-sm">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- ستون ۵: اطلاعات تماس -->
+                    <div class="slide-up" style="animation-delay: 0.4s">
+                        <h4 class="footer-section-title text-lg font-light">اطلاعات تماس</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-gray-400 mb-1">تلفن پشتیبانی:</div>
+                                <div class="text-gray-300">۰۲۱-۹۳۲۳</div>
+                                <div class="text-gray-300 text-sm">۰۲۱-۹۳۲۳۰۰۰۰</div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-400 mb-1">ایمیل پشتیبانی:</div>
+                                <div class="text-gray-300">support@luxdesign.ir</div>
+                            </div>
+                            
+                            <div>
+                                <div class="text-sm text-gray-400 mb-1">تلگرام پشتیبانی:</div>
+                                <div class="text-gray-300">@luxdesign.support</div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <div class="text-sm text-gray-400 mb-1">آدرس:</div>
+                                <div class="text-gray-300 text-sm">
+                                    تهران، میرداماد، بلوار ناهید غربی، پلاک ۱۲، واحد ۳
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش کپی‌رایت -->
+        <div class="copyright-border py-8 px-6 md:px-12">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm text-center md:text-right mb-4 md:mb-0">
+                        © ۲۰۲۳ LuxDesign. تمامی حقوق برای این اثر هنری دیجیتال محفوظ است. هرگونه کپی‌برداری پیگرد قانونی دارد.
+                    </div>
+                    
+                    <div class="flex space-x-6 space-x-reverse text-sm text-gray-400">
+                        <a href="#" class="hover:text-gold transition-colors duration-300">حریم خصوصی</a>
+                        <a href="#" class="hover:text-gold transition-colors duration-300">قوانین و مقررات</a>
+                        <a href="#" class="hover:text-gold transition-colors duration-300">سوالات متداول</a>
+                        <a href="#" class="hover:text-gold transition-colors duration-300">نقشه سایت</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نوار طلایی انتهایی -->
+        <div class="h-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+    </footer>
+
+    <script>
+        // مدیریت تغییر صفحات
+        document.addEventListener('DOMContentLoaded', function() {
+            // تعیین صفحه فعال بر اساس URL
+            const path = window.location.pathname;
+            const pageName = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+            
+            // نمایش صفحه مناسب
+            showPage(pageName || 'home');
+            
+            // تنظیم لینک‌های ناوبری
+            setupNavigation();
+            
+            // مدیریت منوی موبایل
+            setupMobileMenu();
+        });
+        
+        function showPage(pageId) {
+            // مخفی کردن همه صفحات
+            const pages = ['home', 'portfolio', 'services', 'about', 'contact'];
+            pages.forEach(page => {
+                document.getElementById(`${page}-page`).classList.add('hidden');
+            });
+            
+            // نمایش صفحه درخواستی
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // به روزرسانی ناوبری فعال
+            updateActiveNav(pageId);
+        }
+        
+        function updateActiveNav(pageId) {
+            // حذف کلاس فعال از همه لینک‌ها
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav-link');
+            });
+            
+            // افزودن کلاس فعال به لینک مربوطه
+            const navLink = document.querySelector(`a[href="${pageId === 'home' ? 'index.html' : pageId + '.html'}"]`);
+            if (navLink) {
+                navLink.classList.add('active-nav-link');
+            }
+        }
+        
+        function setupNavigation() {
+            // مدیریت کلیک روی لینک‌های ناوبری
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const pageId = href.replace('.html', '');
+                    
+                    // نمایش صفحه مورد نظر
+                    showPage(pageId === 'index' ? 'home' : pageId);
+                    
+                    // بستن منوی موبایل اگر باز باشد
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    
+                    // به روزرسانی URL در مرورگر
+                    history.pushState({}, '', href);
+                });
+            });
+        }
+        
+        function setupMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // بستن منو هنگام کلیک روی لینک‌ها
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // مدیریت دکمه‌های مشاهده نمونه‌کارها
+        document.addEventListener('click', function(e) {
+            if (e.target && (e.target.textContent.includes('مشاهده نمونه‌کارها') || e.target.textContent.includes('مشاهده همه'))) {
+                e.preventDefault();
+                showPage('portfolio');
+                history.pushState({}, '', 'portfolio.html');
+            }
+            
+            if (e.target && e.target.textContent.includes('درخواست طراحی')) {
+                e.preventDefault();
+                showPage('contact');
+                history.pushState({}, '', 'contact.html');
+            }
+        });
+    </script>
+</body>
+</html>
